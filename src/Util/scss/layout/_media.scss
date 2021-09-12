@@ -1,0 +1,642 @@
+//MAX WIDTH 600px
+@media screen and(max-width: 600px) {
+
+    //Start banner
+    #banner {
+        margin-top: 70px !important;
+        height: auto;
+
+        //Start slick-slider
+        .slick-slider {
+
+            //Start slick-list
+            .slick-list {
+
+
+                .slick__item {
+                    height: 30vh;
+                    background-size: cover;
+                }
+            }
+            //End slick-list
+
+            //Start slick-dots 
+            .slick-dots {
+                bottom: 50px !important;
+                left: 10% !important;
+                z-index: 20;
+
+                li {
+
+                    button {
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+            //End slick-dots
+
+        }
+        //End slick-slider
+
+    }
+    //End banner
+
+
+    //Start commingSoon
+    #commingSoon {
+        padding: 40px 0;
+
+        //Start commingSoon__wrap
+        .commingSoon__wrap { 
+            padding: 5px;
+
+             //Start commingSoon__info 
+            .commingSoon__info {
+                
+                //Start commingSoon__content
+                .commingSoon__content {
+
+                }
+                //End commingSoon__content
+
+                //Start commingSoon__trailer
+                .commingSoon__trailer {
+                    
+                    //Start trailer__wrap
+                    .trailer__wrap {
+                        width: 200px;
+                        height: 130px;
+
+                        &:hover::before {
+                            transform: skew(30deg) translate(70px, -30px);
+                        }
+                    }
+                    //End trailer__wrap
+                }
+                //End commingSoon__trailer
+            }
+            //End commingSoon__info
+
+            //Start commingSoon__slider
+            .commingSoon__slider {
+                padding: 20px 0 !important;
+
+                .slider__list {
+
+                    .slick-slide{ 
+
+                        .slider__item {
+        
+                            .slider__wrap { 
+
+                                .slider__content {
+                                    
+                                    img { 
+                                        height: 220px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .slick-prev, .slick-next {
+                        top: 100% !important;
+                    }
+
+                    .slick-arrow {
+
+                        &::before {
+
+                            font-size: 2rem;
+                        }
+                    }
+
+                    .slick-next {
+                        right: 40%; 
+                    }
+
+                    .slick-prev {
+                        left: 40%;
+                    }
+                }
+            }
+            //End commingSoon__slider
+        }
+        //End commingSoon__wrap
+    }
+    //End commingSoon
+
+
+
+    //Start films
+    #films {
+        padding: 50px 20px;
+
+        //Start nav-tabs
+        .nav {
+            // border: none;
+            background-color: transparent;
+            width: auto !important;
+            justify-content: center;
+            
+            .nav-item {
+                margin: 0;
+                background-color: #FFAA4C;
+                
+                .nav-link {
+                    color: white;
+                    border-radius: 0;
+                    transition: all 0.5s;
+                }
+    
+                .nav-link.active {
+                    color: #FFAA4C;
+                }
+            }
+        }
+        //End nav-tabs
+
+        //Start tab-content
+        .tab-content {
+
+            #phimSapChieu, #phimDangChieu {
+
+                //Start films__slider-list 
+                .films__slider-list {
+
+                    //Start films__slider-item
+                    .films__slider-item {
+                        height: 350px;
+
+                        //Start slider__item-wrap
+                        .slider__item-wrap {
+
+                            img {
+                                height: 270px !important;
+                            }
+                            
+                            //Start slider__item-content
+                            .slider__item-content { 
+                                height: calc(350px - 270px);
+
+                                h4 {
+                                    font-size: 1rem;
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 2;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+                            }
+                            //End slider__item-content
+
+                            .slider__item-hot {
+                                width: 35px;
+                                height: 35px;
+                                top: 5px;
+                                left: 5px;
+
+                                i {
+                                    font-size: 1rem;
+                                }
+                            }
+
+                            .slider__item-reaction {
+                                width: 35px;
+                                height: 35px;
+                                top: 5px;
+                                right: 5px;
+                            }
+                        }
+                    }
+                    //End films__slider-item
+
+                    //Start slick-arrow
+                    .slick-arrow {
+                        transform: translateY(-50px);
+                        z-index: 20;
+
+                        &::before {
+                            font-size: 1.5rem;
+                        }
+                    }
+    
+                    .slick-prev {
+                        left: -30px;
+                    }
+    
+                    .slick-next {
+                        right: -30px;
+                    }
+                    //End slick-arrow
+                }
+                //End films__slider-list
+
+
+            }
+        }
+        //End tab-content 
+    }
+    //End films
+    
+
+    //Start showtimes
+    #showtimes {
+
+        //Start showtimes__content 
+        .showtimes__content {
+
+            //Start showtimes__tabs-theater
+            .showtimes__tabs-theater {
+
+                //Start showtimes__tabsPane-theater 
+                .showtimes__tabsPane-theater {
+                    
+                    .ant-tabs-tab {
+                        padding: 8px 5px !important;
+                    }
+
+                    .ant-tabs-tabpane {
+                        padding-left: 0 !important;
+                    }
+                }
+                //End showtimes__tabsPane-theater
+            }
+            //End showtimes__tabs-theater
+        }
+        //End showtimes__content
+
+        // .ant-tabs-tabpane {
+        //     padding-left: 0 !important;
+        // }
+        
+    }
+    //End showtimes
+
+    //Start footer 
+    #footer {
+
+        .footer__wrap {
+
+            .footer__left {
+
+            }
+
+            .footer__right {
+                margin-top: 50px;
+
+                .footer__right-heading {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    //End footer
+
+    // Start contact
+    #contact__phone-btn {
+        bottom: 40px;
+        right: 10px;
+    }
+    //End contact
+
+    //Start modalUser
+    .modalUser {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.7);
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+
+
+        .modalUser__dialog {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .modalUser__content {
+                padding: 20px 7px;
+                background-color: white;
+                width: 350px;
+                position: relative;
+
+                .modalUser__header {
+                    margin-bottom: 30px;
+                }
+
+                .modalUser__form {
+
+                    .modalUser__form-btn {
+                        background-color: $primary-color;
+                        color: white;
+                    }
+                }
+
+                .modalUser__social {
+                    text-align: center;
+                    padding: 0 10px;
+                    
+                    h5 {
+                        margin-bottom: 30px;
+                    }
+
+                    .modalUser__social-list {
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .modalUser__social-item {
+                            margin: 0 10px;
+
+                            .modalUser__social-link {
+                                display: inline-block;
+                                width: 38px;
+                                height: 38px;
+                                border-radius: 13px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+                                i {
+                                    font-size: 2rem;
+                                    color: white;
+                                }
+
+                                &:hover {
+                                    animation-name: scaleAnimation;
+                                    animation-duration: 1s;
+                                }
+                            }
+
+                            .modalUser__social-link.instargam {
+                                background-image: linear-gradient(to top right, #FFDC80, #FCAF45, #F77737, #F56040, #FD1D1D, #E1306C, #C13584, #833AB4, #5851DB, #405DE6);
+                            }
+
+                            .modalUser__social-link.facebook {
+                                background-color: #0d8cf0;
+                                align-items: flex-end;
+                                border-radius: 50%;
+                            }
+
+                            .modalUser__social-link.envelope {
+                                background-color: #c5211f;
+                                border-radius: 7px;
+                            }
+                        }
+                    }
+
+                    .modalUser__social-register {
+                        border: none;
+                        background-color: transparent;
+                        outline: none;
+                        cursor: pointer;
+                        transition: all 0.5s;
+                        margin-top: 30px;
+
+                        &:hover {
+                            color: $primary-color;
+                        }
+                    }
+                }
+
+                .modalUser__name {
+                    position: absolute;
+                    bottom: 0;
+                    right: 10px;
+                    letter-spacing: 1px;
+                }
+
+                .modalUser__close {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    cursor: pointer;
+
+                    i {
+                        color: rgb(255, 38, 0);
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+    //End modalUser
+
+    //Start filmInfo 
+
+    #filmInfo {
+
+        //Start filmInfo__wrap
+        .filmInfo__wrap {
+
+            //Start filmInfo__img
+            .filmInfo__img {
+                justify-content: center;
+                margin-bottom: 30px;
+
+                img {
+                    width: 50%;
+                    height: 300px;
+                }
+            }
+            //End filmInfo__img
+
+            //Start filmInfo__content
+            .filmInfo__content {
+                padding: 0 15px;
+
+                .filmInfo__heading {
+                    text-align: center;
+                }
+
+                .filmInfo__about {
+                    margin: 40px 0;
+
+                    .filmInfo__about-tab {
+
+                        .ant-tabs-nav-wrap {
+                            justify-content: center;
+                        }
+
+                        //Start about__tabPane-showtimes
+                        .about__tabPane-showtimes {
+
+                            .tabPane__showtimes-item {
+                                // padding: 0 5px;
+
+                                .showtimes__item-content {
+                                    padding: 0;
+                                    
+                                    .showtimes__item-content-left {
+                                        flex-direction: column;
+                                        justify-content: center;
+                                        align-items: center !important;
+                                        width: 40% !important;
+
+                                        i {
+                                            margin-bottom: 20px;
+                                            font-size: 1.5rem;
+                                        }
+                                    }
+
+                                    .showtimes__item-right {
+                                        width: 60% !important;
+                                        display: grid;
+                                        grid-template-columns: 1fr 1fr;
+
+                                        .showtimes__item-times-btn {
+                                            padding: 5px 10px;
+                                            // display: inline-block;
+                                            height: 40px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                                
+                    }
+
+                    .ant-tabs-tabpane {
+                        padding-left: 10px !important;
+                    }
+                }
+            }
+            //End filmInfo__content
+        }
+        //End filmInfo__wrap
+    }
+    //End filmInfo
+
+    //Start ticketRoom
+    #ticketRoom {
+       padding: 60px 0;
+
+        //Start ticketRoom__wrap
+        .ticketRoom__wrap {
+
+            //Start ticketRoom__theater
+            .ticketRoom__theater {
+
+                //Start ticketRoom__about
+                .ticketRoom__about {
+
+                    //Start ticketRoom__about-date
+                    .ticketRoom__about-date {
+
+                        span {
+                            font-size: 0.9rem;
+                            // letter-spacing: 1px;
+                        }
+                    }
+                    //End ticketRoom__about-date
+                }
+                //End ticketRoom__about
+
+                //Start ticketRoom__rowSeats
+                .ticketRoom__rowSeats {
+                    margin-top: 20px;
+
+                    //Start ticketRoom__rowSeats-screen 
+                    .ticketRoom__rowSeats-screen { 
+                        height: 8px;
+                        width: 80% !important;
+
+                        &::after { 
+                            height: 60px;
+                        }
+                    }   
+                    //End ticketRoom__rowSeats-screen 
+
+                    //Start ticketRoom__rowSeats-module
+                    .ticketRoom__rowSeats-module {
+                        margin-top: 70px;
+
+                        //Start rowSeats__module-name  
+                        .rowSeats__module-name {
+                            color: $primary-color;
+                            
+                            div {
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 7px;
+                                border: 1px solid white;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin-bottom: 7px;
+                            }
+                        }
+                        //Start rowSeats__module-name
+
+                        //Start rowSeats__module-list
+                        .rowSeats__module-list {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            //Start rowSeats__module-item
+                            .rowSeats__module-item {
+                                height: 30px;   
+
+                                button {
+                                    width: 75%;
+                                    height: 75%;
+                                    border: none;
+                                    border-radius: 5px;
+                                    background-color: white;
+                                    outline: none;
+                                    cursor: pointer;
+                                }
+                            }
+                            //End rowSeats__module-item
+                        }
+                        //End rowSeats__module-list
+                    }
+                }
+                //End ticketRoom__rowSeats
+
+                 //Start ticketRoom__note
+                .ticketRoom__note {
+                    margin-top: 50px;
+                    
+                    .ticketRoom__note-item {
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+
+                        .ticketRoom__note-btn {
+                            width: 30px;
+                            height: 28px;
+                            border: none;
+                            border-radius: 5px;
+                            background-color: white;
+                            outline: none;
+                            margin-right: 0;
+                            margin-bottom: 5px;
+                        }
+                    }
+
+                }
+                //End ticketRoom__note
+            }
+            //End ticketRoom__theater
+
+
+            //Start ticketRoom__booking 
+            .ticketRoom__booking {
+
+            }
+            //End ticketRoom__booking 
+        }
+    }
+    //End ticketRoom
+}

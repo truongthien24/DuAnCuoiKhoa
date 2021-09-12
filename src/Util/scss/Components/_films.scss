@@ -1,0 +1,147 @@
+//Start films
+#films {
+    padding: 100px 0;
+    background-color: black;
+
+    //Start nav-tabs
+    .nav-tabs {
+        border: none;
+        background-color: #FFAA4C;
+
+        .nav-item {
+            margin: 0;
+            
+            .nav-link {
+                color: white;
+                border-radius: 0;
+                transition: all 0.5s;
+            }
+
+            .nav-link.active {
+                color: #FFAA4C;
+            }
+        }
+    }
+    //End nav-tabs
+
+     //Start tab-content
+     .tab-content {
+        margin: 40px 0;
+
+        //Start phimSapChieu
+        #phimSapChieu, #phimDangChieu {
+
+            //Start films__slider-list
+            .films__slider-list {
+
+                    //Start films__slider-item
+                    .films__slider-item {
+                        padding: 10px;
+                        height: 500px;
+                        position: relative;
+
+                        .slider__item-wrap {
+                            position: relative;
+
+                            img {
+                                width: 100%;
+                                height: 400px;
+                                border-radius: 10px;
+                            }
+
+                            .slider__item-content {
+                                display: flex;
+                                flex-direction: column;
+                                height: 100px;
+                                align-items: center;
+                                padding: 10px 0;
+
+                                h4 {
+                                    color: white;
+                                }
+                            }
+
+                            //Start slider__item-hot
+                            .slider__item-hot {
+                                position: absolute;
+                                top: 10px;
+                                left: 10px;
+                                width: 45px;
+                                height: 45px;
+                                -webkit-backdrop-filter: blur(10px);
+                                backdrop-filter: blur(10px);
+                                background-color: rgba(255, 255, 255, 0.4);
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 10px;
+                                visibility: hidden;
+
+                                i {
+                                    font-size: 1.4rem;
+                                    color: #FFAA4C;
+                                }
+                            }
+                            //End slider__item-hot
+
+                            //Start slider__item-reaction
+                            .slider__item-reaction {
+                                position: absolute;
+                                top: 10px;
+                                right: 10px;
+                                width: 45px;
+                                height: 45px;
+                                backdrop-filter: blur(10px);
+                                -webkit-backdrop-filter: blur(10px);
+                                background-color: rgba(0,0,0,0.5);
+                                color: pink;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: 10px;
+                            }
+                            //End slider__item-reaction
+                        }
+
+                        .slider__item-wrap.hot {
+
+                            .slider__item-hot {
+                                visibility: visible;
+                            }
+                        }
+
+                        .films__slider-item-overlay {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: 1;
+                        }
+                    }
+                    
+                    //End films__slider-item
+
+                .slick-arrow {
+
+                    &::before {
+                        font-size: 2rem;
+                    }
+                }
+
+                .slick-prev {
+                    left: -50px;
+                }
+
+                .slick-next {
+                    right: -50px;
+                }
+            }
+            //End films__slider-list
+        }
+        //End phimSapChieu
+    }
+    //End tab-content
+
+}
+//End films

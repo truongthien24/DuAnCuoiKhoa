@@ -1,0 +1,43 @@
+//Start showtimes
+#showtimes {
+    padding: 80px 0;
+    background-color: white;
+    
+    @include title;
+    .title {
+        color: $primary-color;
+    }
+
+    //Start showtimes__content 
+    .showtimes__content {
+        margin: 50px 0;
+        padding: 20px;
+        box-shadow: 5px 5px 10px rgba(0,0,0,0.3), -5px -5px 10px rgba(0,0,0,0.3);
+
+        //Start showtimes__tabs-theater
+        .showtimes__tabs-theater {
+            width: 100%;
+            
+            //Start showtimes__tabsPane-theater 
+            .showtimes__tabsPane-theater {
+
+                .ant-tabs-tab {
+                    height: 66px !important;
+                }
+            }
+            //End showtimes__tabsPane-theater
+        }
+        //End showtimes__tab-theater
+    }
+    //End showtimes__content
+
+}
+//End showtimes
+
+.showtimes__time-btn {
+    border: none;
+    width: 70px;
+    height: 30px;
+    margin: 5px 0;
+    outline: none;
+}

@@ -1,0 +1,264 @@
+//Start footer__home
+#commingSoon {
+    padding: 80px 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20px;
+        background-image: linear-gradient(to bottom, black, transparent);
+    }
+
+    //Start commingSoon__wrap
+    .commingSoon__wrap {
+        // position: relative;
+        // z-index: 2;
+        
+        @include title;
+
+       //Start commingSoon__info 
+        .commingSoon__info {
+            
+            //Start commingSoon__content
+            .commingSoon__content {
+
+                 // Start content__reaction
+                .content__reaction {
+
+                    div {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        background-color: white;
+                        color: $primary-color;
+                        margin-right: 10px;
+                        border-radius: 10px;
+                    }
+                }
+                //End content__reaction
+
+                //Start content__name
+                .content__name {
+                    
+                    span {
+                        letter-spacing: 1px;
+                        font-size: 2.5rem;
+                    }
+                }
+                //End content__name
+
+                //Start content__time 
+                .content__time {
+                    color: rgb(138, 135, 135);
+                    
+                    i {
+                        margin-right: 20px;
+                    }
+
+                    span {
+                        font-size: 1.1rem;
+                    }
+                }
+                //End content__time
+
+                //Start content__introduce
+                .content__introduce {
+
+                    p {
+                        color: white;
+                    }
+                }
+                //End content__introduce
+
+                //Start content__link
+                .content__link {
+                    color: $primary-color;
+                    transition: all 0.5s;
+                    position: relative;
+
+                    &:hover {
+                        text-decoration: none;
+                        color: white;
+                    }
+
+                    &:hover::after {
+                        width: 110%;
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: -10px;
+                        left: 0;
+                        width: 0;
+                        height: 3px;
+                        background-image: linear-gradient(to right, $secondary-color, $primary-color);
+                        transition: all 0.7s;
+                    }
+
+                    span {
+                        font-size: 1.2rem;
+                        text-transform: uppercase;
+                        letter-spacing: 1.7px;
+                    }
+
+                    i {
+                        font-size: 1rem;
+                        margin-left: 10px
+                    }
+                }
+                //End content__link
+            }
+            //End commingSoon__content
+
+            //Start commingSoon__trailer
+            .commingSoon__trailer {
+
+                //Start trailer__wrap
+                .trailer__wrap {
+                    width: 350px;
+                    height: 250px;
+                    background-size: cover;
+                    background-position: center;
+                    filter: drop-shadow(0 0 15px rgba(0,0,0,0.6));
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: 150%;
+                        height: 150%;
+                        background-color: rgba(255,255,255,0.1);
+                        transform: skew(30deg) translate(-450px, 100px);
+                        backdrop-filter: blur(10px);
+                        z-index: 2;
+                        transition: all 0.7s;
+                    }
+
+                    &:hover .trailer__btn i {
+                        transform: scale(1.3);
+                        color: $primary-color;
+                    }
+
+                    &:hover::before {
+                        transform: skew(30deg) translate(120px, -50px);
+                    }
+
+                    .trailer__btn {
+                        outline: none;
+                        background-color: transparent;
+                        border: none;
+                        z-index: 3;
+
+                        i {
+                            font-size: 2.5rem;
+                            color: #fff;
+                            transition: all 0.7s;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .trailer__overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0,0,0,0.5);
+                        z-index: 1;
+                        transition: all 0.5s;
+                    }
+                }
+                //End trailer__wrap
+            }
+            //End commingSoon__trailer
+        }
+       //End commingSoon__info
+
+       //Start commingSoon__slider
+        .commingSoon__slider {
+
+            .slider__list {
+                width: 100%;
+
+                .slick-slide{
+
+
+                    .slider__item {
+                        padding: 20px;
+    
+                        .slider__wrap {
+                            position: relative;
+                            border: none;
+                            background-color: transparent;
+                            outline: none;
+                            cursor: pointer;
+    
+                            &:hover > .slider__overlay {
+                                background-color: transparent;
+                                z-index: 0;
+                            }
+    
+                            .slider__content {
+                                text-align: center;
+                                position: relative;
+                                width: 100%;
+                                height: 100%;
+                                z-index: 1;
+    
+                                img {
+                                    width: 100%;
+                                    height: 320px;
+                                    border-radius: 20px;
+                                }
+    
+                                h5 {
+                                    color: white;
+                                }
+                            }
+    
+                            .slider__overlay {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: rgba(0,0,0,0.8);
+                                border-radius: 20px;
+                                transition: all 0.7s;
+                                z-index: 2;
+                            }
+                        }
+    
+                    }
+                }
+                    
+            }
+        }
+       //End commingSoon__slider
+    }
+    //End commingSoon__wrap
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top, black, rgba(0,0,0,0.6));
+        z-index: 1;
+    }
+}
+//End footer__home

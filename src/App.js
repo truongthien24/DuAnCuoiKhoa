@@ -1,23 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from './Page/Home/Home';
+import HomeMobile from './Page/Home/HomeMobile';
+import HeaderComponent from './Component/HeaderComponent';
+import './Util/css/style.css';
+import {Router, Switch, Route} from 'react-router-dom';
+import { HomeHeaderTemplate } from './Template/HomeHeaderTemplate/HomeHeaderTemplate';
+import {createBrowserHistory} from 'history'; 
+import Login from './Page/Login/Login';
+import Register from './Page/Register/Register';
+import FilmInfo from './Page/Film/FilmInfo';
+import "animate.css";
+import TicketRoom from './Page/TicketRoom/TicketRoom';
+import Profile from './Page/Profile/Profile';
+import Admin from './Page/Admin/Admin';
+
+export const history = createBrowserHistory();
 
 function App() {
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <Switch>
+          <HomeHeaderTemplate exact path="/home" component={Home} componentMobile={HomeMobile}/>
+          <HomeHeaderTemplate exact path="/detail/:id" component={FilmInfo} componentMobile={FilmInfo}/>
+          <HomeHeaderTemplate exact path="/login" component={Login}/>
+          <HomeHeaderTemplate exact path="/register" component={Register}/>
+          <HomeHeaderTemplate exact path="/ticketroom/:id" component={TicketRoom} componentMobile={TicketRoom}/>
+          <HomeHeaderTemplate exact path="/profile" component={Profile} componentMobile={Profile}/>
+          <HomeHeaderTemplate exact path="/" component={Home} componentMobile={HomeMobile}/>
+          <Route exact path="/admin" component={Admin}></Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
