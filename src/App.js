@@ -14,6 +14,12 @@ import "animate.css";
 import TicketRoom from './Page/TicketRoom/TicketRoom';
 import Profile from './Page/Profile/Profile';
 import Admin from './Page/Admin/Admin';
+import {AdminTemplate} from './Template/AdminTemplate';
+import Films from './Page/Home/Films/Films';
+import AdminFilms from './Page/Admin/AdminFilms/AdminFilms';
+import AdminUser from './Page/Admin/User/AdminUser';
+import AdminShowtimes from './Page/Admin/AdminShowtimes/AdminShowtimes';
+import AdminAddNew from './Page/Admin/AdminAddNew/AdminAddNew';
 
 export const history = createBrowserHistory();
 
@@ -30,7 +36,11 @@ function App() {
           <HomeHeaderTemplate exact path="/ticketroom/:id" component={TicketRoom} componentMobile={TicketRoom}/>
           <HomeHeaderTemplate exact path="/profile" component={Profile} componentMobile={Profile}/>
           <HomeHeaderTemplate exact path="/" component={Home} componentMobile={HomeMobile}/>
-          <Route exact path="/admin" component={Admin}></Route>
+          {/* <AdminTemplate exact path="/admin/films" component={Films}/> */}
+          <AdminTemplate exact path="/admin/films" component={AdminFilms}/>
+          <AdminTemplate exact path="/admin/user" component={AdminUser}/>
+          <AdminTemplate exact path="/admin/showtimes" component={AdminShowtimes}/>
+          <AdminTemplate exact path="/admin/addnew" component={AdminAddNew}/>
         </Switch>
       </Router>
     </div>

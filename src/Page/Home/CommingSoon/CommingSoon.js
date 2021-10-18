@@ -18,8 +18,6 @@ export default function CommingSoon(props) {
         maPhim: '',
     })
 
-    const dispatch = useDispatch();
-
     useEffect(() => {
         //Gọi sự kiện lấy api sau khi render
         let action = LayDanhSachPhim();
@@ -27,6 +25,8 @@ export default function CommingSoon(props) {
     }, []);
 
     const arrPhim = useSelector(state => state.QuanLyPhimReducer.arrPhim);
+
+    const dispatch = useDispatch();
 
     var settings = {
         dots: true,

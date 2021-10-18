@@ -24,6 +24,7 @@ export default function Films(props) {
         slidesToScroll: 2,
         speed: 500,
         rows: 2,
+        // slidesPerRow: 2,
         responsive: [
             {
               breakpoint: 1024,
@@ -31,7 +32,7 @@ export default function Films(props) {
                 slidesToShow: 3,
                 slidesToScroll: 1,
                 infinite: true,
-                dots: true
+                dots: true,
               }
             },
             {

@@ -14,12 +14,12 @@ import {
 export default function Admin(props) {
     const [collapse,setCollapse] = useState(false);
 
-    const userLogin = JSON.parse(localStorage.getItem(`${USER_LOGIN}`));
-    console.log(userLogin)
-    if (userLogin.maLoaiNguoiDung !== 'QuanTri') {
-        alert('Bạn không có quyền truy cập !');
-        return <Redirect to="/home" />
-    }
+    // const userLogin = JSON.parse(localStorage.getItem(`${USER_LOGIN}`));
+    // console.log(userLogin)
+    // if (userLogin.maLoaiNguoiDung !== 'QuanTri') {
+    //     alert('Bạn không có quyền truy cập !');
+    //     return <Redirect to="/home" />
+    // }
 
     const { Header, Content, Footer, Sider } = Layout;
     const { SubMenu } = Menu;

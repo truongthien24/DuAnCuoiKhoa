@@ -30,7 +30,7 @@ export const DangNhap = (userAccount) => {
             document.querySelector('#loginError').style.display = 'none';
 
             if(result.data.content.maLoaiNguoiDung == 'QuanTri') {
-                history.push('/admin')
+                history.push('/admin/films')
             }
 
         }catch(error) {

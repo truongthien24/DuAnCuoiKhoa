@@ -30,14 +30,7 @@ export default function Banner(props) {
         return arrBanner.map((item, index) => {
             return <div>
                     <div className="slick__item" style={{backgroundImage: `url(${item.hinhAnh})`}}>
-                    {/* <img src={item.hinhAnh}></img> */}
-                    <div className="slick__content">
-                        <button className="slick__content-btn" onClick={() => {
-                            setToggler(!toggler);
-                        }}>
-                            <i class="far fa-play-circle"></i>
-                        </button>
-                    </div>
+                    <div className="slick__content"></div>
                     <div className="overlay"></div>
                 </div>
             </div>
@@ -51,14 +44,6 @@ export default function Banner(props) {
                     {renderBanner()}
                 </Slider>
             </div>
-            <FsLightbox
-                toggler={toggler}
-                sources={[
-                    'https://i.imgur.com/fsyrScY.jpg',
-                    'https://www.youtube.com/watch?v=xshEZzpS4CQ',
-                    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-                ]}
-            />
         </Fragment>
     )
 }
