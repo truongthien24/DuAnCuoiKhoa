@@ -20,6 +20,9 @@ import AdminFilms from './Page/Admin/AdminFilms/AdminFilms';
 import AdminUser from './Page/Admin/User/AdminUser';
 import AdminShowtimes from './Page/Admin/AdminShowtimes/AdminShowtimes';
 import AdminAddNew from './Page/Admin/AdminAddNew/AdminAddNew';
+import AdminFilmEdit from './Page/Admin/AdminFilms/AdminFilmEdit';
+import AdminAddUser from './Page/Admin/User/AdminAddUser';
+import AdminChangeUser from './Page/Admin/User/AdminChangeUser';
 
 export const history = createBrowserHistory();
 
@@ -36,9 +39,11 @@ function App() {
           <HomeHeaderTemplate exact path="/ticketroom/:id" component={TicketRoom} componentMobile={TicketRoom}/>
           <HomeHeaderTemplate exact path="/profile" component={Profile} componentMobile={Profile}/>
           <HomeHeaderTemplate exact path="/" component={Home} componentMobile={HomeMobile}/>
-          {/* <AdminTemplate exact path="/admin/films" component={Films}/> */}
           <AdminTemplate exact path="/admin/films" component={AdminFilms}/>
+          <AdminTemplate exact path="/admin/filmsEdit/:id" component={AdminFilmEdit}/>
           <AdminTemplate exact path="/admin/user" component={AdminUser}/>
+          <AdminTemplate exact path="/admin/addUser" component={AdminAddUser}/>
+          <AdminTemplate exact path="/admin/changeUser/:id" component={AdminChangeUser}/>
           <AdminTemplate exact path="/admin/showtimes" component={AdminShowtimes}/>
           <AdminTemplate exact path="/admin/addnew" component={AdminAddNew}/>
         </Switch>

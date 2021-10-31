@@ -1849,6 +1849,18 @@ body {
   border-bottom: none;
 }
 
+#adminFilm .list__btn {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}
+
+#adminFilm .list__btn span {
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 600px) {
   #banner {
     margin-top: 70px !important;

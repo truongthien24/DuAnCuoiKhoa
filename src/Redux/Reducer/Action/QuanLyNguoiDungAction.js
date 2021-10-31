@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ACCESS_TOKEN, USER_LOGIN } from '../../../Util/Settings';
+import { ACCESS_TOKEN, maNhom, USER_LOGIN } from '../../../Util/Settings';
 import { Alert } from 'antd';
 import HeaderComponent from '../../../Component/HeaderComponent';
 import Home from '../../../Page/Home/Home';
@@ -82,6 +82,71 @@ export const ThongTinTaiKhoan = () => {
                 payload: result.data.content
             })
         }catch(error) {
+            console.log({error});
+        }
+    }
+}
+
+//Xử lý nghiệp vụ layDanhSachNguoiDung 
+export const layDanhSachNguoiDung = () => {
+    return async dispatch => {
+        try { 
+            const result = await axios({
+                url: `http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${maNhom}`,
+                method: 'GET',
+            })
+            dispatch({
+                type: 'GET_DANHSACH_NGUOIDUNG',
+                payload: result.data.content
+            })
+            console.log({result});
+        } catch (error) {
+            console.log({error});
+        }
+    }
+}
+
+//Xử lý nghiệp vụ xóa người dùng
+export const XoaNguoiDungAction = (taiKhoan) => {
+    return async dispatch => {
+        try {
+            const result = await axios({
+                url: `http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+                method: 'delete',
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`
+                }
+            })
+
+            console.log({result});
+
+            alert('Xóa người dùng thành công ');   
+
+            
+            dispatch(layDanhSachNguoiDung());
+        }
+        catch(error) {
+            console.log({error});
+        }
+    }
+}
+
+//Xử lý nghiệp vụ thêm người dùng 
+export const ThemNguoiDungAction = (frmData) => {
+    return async dispatch => {
+        try {
+            const result = await axios({
+                url: 'http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/ThemNguoiDung',
+                method: 'post',
+                data: frmData,
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`
+                }
+            })
+            console.log({result});
+            alert('Thêm thành công !');
+        }
+        catch (error) {
             console.log({error});
         }
     }

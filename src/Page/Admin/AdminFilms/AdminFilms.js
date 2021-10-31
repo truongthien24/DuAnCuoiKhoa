@@ -1,22 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect } from 'react'
+
 import { Input, Space, Table } from 'antd';
-import { AudioOutlined } from '@ant-design/icons';
+import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 import { LayDanhSachPhim } from '../../../Redux/Reducer/Action/QuanLyPhimAction';
+import { Fragment } from 'react';
+import { history } from '../../../App';
+import { NavLink } from 'react-router-dom';
+import {XoaPhimAction} from '../../../Redux/Reducer/Action/QuanLyPhimAction';
 
-export default function AdminFilms(props) {
+const { Search } = Input;
 
-    const { Search } = Input;
 
+export default function Films(props) {
+    const {arrPhim} = useSelector(state => state.QuanLyPhimReducer);
     const dispatch = useDispatch();
-
-    //Load dữ liệu danh sách phim
-    useEffect(()=> {
-        const action = LayDanhSachPhim();
-        dispatch(action);
-    }, []);
-
-    const {arrPhim} = useSelector(state=>state.QuanLyPhimReducer);
 
     const suffix = (
         <AudioOutlined
@@ -26,90 +24,112 @@ export default function AdminFilms(props) {
             }}
         />
     );
-
-    //Biến data để đưa dữ liệu vào table
-    let data = [];
-
-    //renderDanhSachPhim 
-    const renderDanhSachPhim = () => {
-        let stt = 1;
-        for(let item of arrPhim) {
-            let itemArrPhim = {
-                key: `${stt}`,
-                maPhim: `${item.maPhim}`,
-                tenPhim: `${item.tenPhim}`,
-                hinhAnh: <img src={item.hinhAnh} style={{maxWidth: '400px', maxHeight: '100px'}}/>,
-                age: 32,
-                moTa: <p style={{maxWidth: '400px'}}>{item.moTa}</p>,
-                address: 'New York No. 1 Lake Park',
-                hanhDong: <div className="d-flex align-items-center justify-content-center">
-                    <button className="btn btn-outline-dark">
-                        <i className="fas fa-edit"></i>
-                    </button>
-                    <button className="btn btn-outline-dark">
-                        <i className="far fa-trash-alt"></i>
-                    </button>
-                </div>
-            };
-            data.push(itemArrPhim);
-            stt +=1;
-            console.log(item);
-        }
-    }
-
-    renderDanhSachPhim();
-
+    
+    const onSearch = value => {
+        // console.log(value);
+         //gọi api lấy danh sách phim
+         dispatch(LayDanhSachPhim(value));
+    };
+    
     const columns = [
         {
-          title: 'Mã phim',
-          dataIndex: 'maPhim',
-          // specify the condition of filtering result
-          // here is that finding the name started with `value`
-          onFilter: (value, record) => record.maPhim.indexOf(value) === 0,
-        //   sorter: (a, b) => a.maPhim.length - b.maPhim.length,
-          sortDirections: ['descend'],
+            title: 'Mã phim',
+            dataIndex: 'maPhim',
+            sorter:(a,b)=>a.maPhim - b.maPhim,
+    
         },
         {
             title: 'Hình ảnh',
             dataIndex: 'hinhAnh',
-
+            render:(text,film,index) =>{return <Fragment>
+                <img src={film.hinhAnh} alt={film.hinhAnh} width={50} height={50} onError={(e)=>{e.target.onerror = null; e.target.src=`https://picsum.photos/id/${index}/100/100`}}/>
+            </Fragment>}
+            // sorter: (a, b) => a.age - b.age,
         },
         {
-          title: 'Tên phim',
-          dataIndex: 'tenPhim',
-          defaultSortOrder: 'descend',
+            title: 'Tên phim',
+            dataIndex: 'tenPhim',
+        
+            sorter:(a,b)=>{
+                let tenPhimA = a.tenPhim.toLowerCase().trim();
+                let tenPhimb = b.tenPhim.toLowerCase().trim();
+                if(tenPhimA > tenPhimb){
+                    return 1;
+                }return -1;
+            },
+            onFilter: (value, record) => record.address.startsWith(value),
+            filterSearch: true,
+            width: '30%',
         },
         {
-          title: 'Mô tả',
-          dataIndex: 'moTa',
-          onFilter: (value, record) => record.address.indexOf(value) === 0,
-          columnWidth: 1,
+            title: 'Mô tả',
+            dataIndex: 'moTa',
+        
+            sorter:(a,b)=>{
+                let moTaA = a.moTa.toLowerCase().trim();
+                let moTaB = b.moTa.toLowerCase().trim();
+                if(moTaA > moTaB){
+                    return 1;
+                }return -1;
+            },
+            render:(text,film) =>{return <Fragment>
+                {film.moTa.length >100 ? film.moTa.substring(0,100) + '...': film.moTa}
+            </Fragment>},
+            onFilter: (value, record) => record.address.startsWith(value),
+            filterSearch: true,
+            width: '40%',
         },
         {
             title: 'Hành động',
             dataIndex: 'hanhDong',
-        }
-      ];
-
+        
+            
+            render:(text,film) =>{return <Fragment>
+                {<div className="d-flex justify-content-center">
+                    <NavLink to={`/admin/filmsEdit/${film.maPhim}`} className="list__btn"><EditOutlined style={{color: '#006400'}}/></NavLink>
+                    <button className="list__btn"><DeleteOutlined style={{color: 'red'}} onClick={()=> {
+                        if (window.confirm('Bạn có chắc muốn xóa phim ' + film.tenPhim)) {
+                            //gọi action
+                            const action = XoaPhimAction(film.maPhim);
+                            dispatch(action);
+                        }
+                    }}/></button>
     
-    const onChange = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
+                    </div>}
+            </Fragment>},
+            onFilter: (value, record) => record.address.startsWith(value),
+            filterSearch: true,
+            width: '15%',
+        },
+    ];
+    
+    
+    
+    function onChange(pagination, filters, sorter, extra) {
+        console.log('params', pagination, filters, sorter, extra);
     }
-
-    const onSearch = value => console.log(value);
-
+    console.log({arrPhim});
+    useEffect(() => {
+        dispatch(LayDanhSachPhim());
+    },[]);
+    const data = arrPhim;
     return (
-        <div>
-            <h1>Quản lý phim</h1>
-            <div className="my-3">
-                <button className="btn btn-outline-dark">Thêm phim</button>
-            </div>
-            <div className="my-3">
-                <Search placeholder="input search text" onSearch={onSearch} enterButton />
-            </div>
-            <div className="my-3">
-                <Table columns={columns} dataSource={data} onChange={onChange} />
-            </div>
+        <div id="adminFilm">
+            <h3 className="text-center">Quản lý phim</h3>
+            <button className="btn btn-outline-success mb-3" onClick={()=> {
+                history.push('/admin/addNew');
+            }}>Thêm phim</button><br/>
+            <Space direction="vertical" className="mb-3">
+
+                <Search
+                    placeholder="tìm kiếm phim"
+                    enterButton="Search"
+                    size="large"
+                    suffix={suffix}
+                    onSearch={onSearch}
+                />
+            </Space>
+            <Table columns={columns} dataSource={data} onChange={onChange} />
         </div>
     )
 }

@@ -42,3 +42,20 @@ export const DatVe = (thongTinLichChieu) => {
     }
 }
 
+//Xử lý nghiệp vụ tạo lịch chiếu
+export const TaoLichChieuAction = (lichChieu) => {
+    return async dispatch => {
+        try {
+            const result = await axios({
+                url: 'http://movieapi.cyberlearn.vn/api/QuanLyDatVe/TaoLichChieu',
+                method: 'post',
+                data: lichChieu,
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`
+                }
+            })
+        }catch(error) {
+            console.log({error});
+        }
+    }
+}

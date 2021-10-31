@@ -1,0 +1,18 @@
+//Start adminFilm
+#adminFilm {
+
+    //Start list__btn 
+    .list__btn {
+        outline: none;
+        background-color: transparent;
+        border: none;
+        margin: 10px;
+        cursor: pointer;
+
+        span {
+            font-size: 1.5rem;
+        }
+    }
+    //End list__btn
+}
+//End adminFilm

@@ -15,6 +15,7 @@ import {
 import { useFormik } from 'formik';
 import moment from 'moment';
 import { themPhimAction } from '../../../Redux/Reducer/Action/QuanLyPhimAction';
+import {maNhom} from '../../../Util/Settings';
 
 export default function AdminAddNew(props) {
 
@@ -26,17 +27,18 @@ export default function AdminAddNew(props) {
 
     const formik = useFormik({
         initialValues: {
-            tenPhim: '',
+            tenPhim:'',
             trailer: '',
-            moTa: '',
+            moTa:'',
             ngayKhoiChieu: '',
-            danhGia: '',
-            dangChieu: '',
-            sapChieu: '',
-            hot: '',
-            hinhAnh: null
+            dangChieu: false,
+            sapChieu: false,
+            hot: false,
+            danhGia:0,
+            hinhAnh:{},
         },
         onSubmit: (values) => {
+            values.maNhom= maNhom;
             //Biến đổi json thành formData
             let frmData = new FormData();
             for(let key in values) {
@@ -82,11 +84,14 @@ export default function AdminAddNew(props) {
             let file = event.target.files[0];
             console.log("file", file);
             await formik.setFieldValue('hinhAnh', file);
-    
-            let reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = async (e) => {
-                await setState(e.target.result);
+
+            if(file.type ==='image/jpeg' || file.type ==='image/jpg' ||file.type ==='image/gif' || file.type ==='image/png'){
+                // tạo đối tượng để đọc file 
+                let reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload= (e)=>{
+                    setState(e.target.result)
+                }
             }
         }
     }
@@ -106,7 +111,7 @@ export default function AdminAddNew(props) {
                         layout="horizontal"
                         initialValues={{ size: componentSize }}
                         size={componentSize}
-                        onFinish={formik.handleSubmit}
+                        onSubmitCapture={formik.handleSubmit}
                     >
                         <Form.Item label="Tên phim">
                             <Input name="tenPhim" onChange={handleChangeInput}/>
@@ -129,12 +134,15 @@ export default function AdminAddNew(props) {
                         <Form.Item label="Sắp chiếu">
                             <Switch name="sapChieu" onChange={handleChangeSwitch}/>
                         </Form.Item>
+                        <Form.Item label="Hot">
+                            <Switch name="hot" onChange={handleChangeSwitch}/>
+                        </Form.Item> 
                         <Form.Item label="Hình Ảnh">
                             <input type="file" name="hinhAnh" onChange={handleChangeInputFile} accept="image/png, image/jpeg, image/jpg"/>
                             <br></br>
                             <img src={state} style={{width: '50%'}}></img>
                         </Form.Item>
-                        <Form.Item style={{display: 'flex', justifyContent: 'center'}}>
+                        <Form.Item style={{display: 'flex', justifyContent: 'center'}} label="Tác vụ">
                             <button className="btn btn-success" type="submit">Thêm phim mới</button>
                         </Form.Item>
                     </Form>

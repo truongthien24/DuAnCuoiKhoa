@@ -92,7 +92,7 @@ export default function CommingSoon(props) {
     }
 
     return (
-        <div id="commingSoon" style={{ backgroundImage: `url(${state.hinhAnh})` }}>
+        <div id="commingSoon" style={{backgroundImage: `url(${state.hinhAnh})`}}>
             <div className="container py-5" style={{position: 'relative', zIndex: '2'}}>
                 <div className="commingSoon__wrap">
                     <div className="row mb-5">

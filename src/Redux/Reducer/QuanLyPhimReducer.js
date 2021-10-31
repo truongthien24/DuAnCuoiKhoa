@@ -3,6 +3,8 @@ const stateDefault = {
     arrBanner: [],
 
     arrPhim: [],
+
+    thongTinPhim: {},
 }
 
 export const QuanLyPhimReducer = (state = stateDefault, action) => {
@@ -16,6 +18,11 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
         case 'LOAD_DANH_SACH_PHIM': {
             const newArrPhim = action.payload;
             state.arrPhim = newArrPhim;
+            return {...state};
+        }
+        break;
+        case 'LAY_THONG_TIN_PHIM': {
+            state.thongTinPhim = action.payload;
             return {...state};
         }
         break;

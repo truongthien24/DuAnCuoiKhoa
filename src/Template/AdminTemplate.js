@@ -38,20 +38,28 @@ export const AdminTemplate = (props) => {
                 <Sider collapsible collapsed={collapse} onCollapse={onCollapse}>
                     <div className="logo" />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-                        <Menu.Item key="1" icon={<UserOutlined />} onClick={()=> {
-                                history.push('/admin/user');
-                            }}>
-                            User
-                        </Menu.Item>
-                        <SubMenu key="sub1" icon={<UserOutlined />} title="Films">
+                        <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+                            <Menu.Item key="1" onClick={()=> {
+                                    history.push('/admin/user');
+                                }}>
+                                User
+                            </Menu.Item>
                             <Menu.Item key="2" onClick={()=> {
+                                history.push('/admin/addUser');
+                            }}>Add User</Menu.Item>
+                            <Menu.Item key="3" onClick={()=> {
+                                history.push('/admin/changeUser');
+                            }}>Change User</Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub2" icon={<UserOutlined />} title="Films">
+                            <Menu.Item key="4" onClick={()=> {
                                 history.push('/admin/films');
                             }}>Films</Menu.Item>
-                            <Menu.Item key="3" onClick={()=> {
+                            <Menu.Item key="5" onClick={()=> {
                                 history.push('/admin/addNew');
                             }}>Add news</Menu.Item>
                         </SubMenu>
-                        <Menu.Item key="4" icon={<FileOutlined />} onClick={()=> {
+                        <Menu.Item key="6" icon={<FileOutlined />} onClick={()=> {
                             history.push('/admin/showtimes');
                         }}>
                             Show times

@@ -10,6 +10,8 @@ const stateDefault = {
     userAccount: usAccount,
     profile: {},
     thongTinDatVe: [],
+    
+    dsNguoiDung: [],
 }
 
 export const QuanLyNguoiDungReducer = (state=stateDefault, action) => {
@@ -24,6 +26,11 @@ export const QuanLyNguoiDungReducer = (state=stateDefault, action) => {
             state.thongTinDatVe = action.payload.thongTinDatVe;
             return {...state};
         }
+        break;
+        case 'GET_DANHSACH_NGUOIDUNG': {
+            state.dsNguoiDung = action.payload;
+            return {...state};
+        };
         break;
         default: return state;
     }
