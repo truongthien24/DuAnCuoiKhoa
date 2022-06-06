@@ -31,6 +31,11 @@ export default function AdminAddUser(props) {
             dispatch(ThemNguoiDungAction(values));
         }
     })
+    
+    const handleChangeMaLoai = (e) => {
+        console.log('e', e);
+        formik.setFieldValue('maLoaiNguoiDung', e);
+    }
    
     return (
         <Fragment>
@@ -132,7 +137,7 @@ export default function AdminAddUser(props) {
                         >
                             <Select
                                 placeholder="Chọn mã loại người dùng"
-                                onChange={formik.handleChange} 
+                                onChange={handleChangeMaLoai} 
                                 name="maLoaiNguoiDung"
                                 allowClear
                             >

@@ -37,6 +37,7 @@ export default function AdminAddNew(props) {
             danhGia:0,
             hinhAnh:{},
         },
+        
         onSubmit: (values) => {
             values.maNhom= maNhom;
             //Biến đổi json thành formData

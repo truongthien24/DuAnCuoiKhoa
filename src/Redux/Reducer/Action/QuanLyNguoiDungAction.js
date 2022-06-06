@@ -6,7 +6,8 @@ import Home from '../../../Page/Home/Home';
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { history } from '../../../App';
-//Xử lý nghiệp vụ đăng nhập
+import Swal from 'sweetalert2';
+ //Xử lý nghiệp vụ đăng nhập
 export const DangNhap = (userAccount) => {
 
     return async dispatch => {
@@ -26,8 +27,13 @@ export const DangNhap = (userAccount) => {
             localStorage.setItem(USER_LOGIN,JSON.stringify(result.data.content));
 
             document.querySelector('#loginModal').style.display = 'none';
-            document.querySelector('#loginSuccess').style.display = 'block';
-            document.querySelector('#loginError').style.display = 'none';
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng nhập thành công',
+                showConfirmButton: false,
+                timer: 1500
+              })
 
             if(result.data.content.maLoaiNguoiDung == 'QuanTri') {
                 history.push('/admin/films')
@@ -35,8 +41,12 @@ export const DangNhap = (userAccount) => {
 
         }catch(error) {
             console.log({error});
-            document.querySelector('#loginSuccess').style.display = 'none';
-            document.querySelector('#loginError').style.display = 'block';
+            Swal.fire({
+                icon: 'error',
+                title: 'Đăng nhập thất bại',
+                showConfirmButton: false,
+                timer: 1500
+              })
         }
     }
 }
@@ -55,13 +65,24 @@ export const DangKy = (userAccount) => {
                 payload: result.data.content
             })
             console.log(result.data.content)
+            Swal.fire({
+                icon: 'success',
+                title: 'Đăng ký thành công!',
+                showConfirmButton: false,
+                timer: 1000               
+            })
             document.querySelector('#registerModal').style.display = 'none';
-            document.querySelector('#registerSuccess').style.display = 'block';
-            document.querySelector('#registerError').style.display = 'none';
+            document.querySelector('#loginModal').style.display = 'block';
         }catch(error) {
-            console.log({error})
-            document.querySelector('#registerSuccess').style.display = 'none';
-            document.querySelector('#registerError').style.display = 'block';
+            console.log({error});
+            document.querySelector('#loginModal').style.display = 'none';
+            document.querySelector('#registerModal').style.display = 'block';
+            Swal.fire({
+                icon: 'error',
+                title: 'Đăng ký thất bại!',
+                showConfirmButton: false,
+                timer: 1000               
+            })
         }
     }
 }

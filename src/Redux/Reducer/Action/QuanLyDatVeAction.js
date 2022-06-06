@@ -1,5 +1,6 @@
 import axios from "axios"
 import { ACCESS_TOKEN } from "../../../Util/Settings"
+import Swal from 'sweetalert2'
 
 //Xử lý nghiệp vụ Lấy danh sách phòng vé
 export const LayDanhSachPhongVe = (ID) => {
@@ -35,6 +36,12 @@ export const DatVe = (thongTinLichChieu) => {
             dispatch({
                 type: 'DAT_VE'
             })
+            Swal.fire({
+                icon: 'success',
+                title: 'Đặt vé thành công',
+                showConfirmButton: false,
+                timer: 1500
+              })
             console.log({result});
         }catch(error) {
             console.log({error});

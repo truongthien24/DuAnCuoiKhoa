@@ -41,6 +41,24 @@ export const LayDanhSachPhim = () => {
     }
 }
 
+//Nghiệp vụ search phim
+export const SearchPhim = (tenPhim) => {
+    return async dispatch => {
+        try {   
+            const result = await axios({
+                url: `http://movieapi.cyberlearn.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}&tenPhim=${tenPhim}`,
+                method: 'get'
+            })
+            dispatch({
+                type: 'LOAD_DANH_SACH_PHIM',
+                payload: result.data.content
+            })
+        }catch(error) {
+            console.log(error.error);
+        }
+    }
+}
+
 //Xử lý nghiệp vụ lấy thông tin phim
 export const layThongTinPhimAction = (maPhim) => {
     return async dispatch => {

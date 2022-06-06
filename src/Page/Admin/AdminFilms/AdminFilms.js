@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Input, Space, Table } from 'antd';
 import { AudioOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { LayDanhSachPhim } from '../../../Redux/Reducer/Action/QuanLyPhimAction';
+import { LayDanhSachPhim, SearchPhim } from '../../../Redux/Reducer/Action/QuanLyPhimAction';
 import { Fragment } from 'react';
 import { history } from '../../../App';
 import { NavLink } from 'react-router-dom';
@@ -28,8 +28,14 @@ export default function Films(props) {
     const onSearch = value => {
         // console.log(value);
          //gọi api lấy danh sách phim
-         dispatch(LayDanhSachPhim(value));
+         if(value !== '') {
+            dispatch(SearchPhim(value));
+         }
     };
+
+    const handleChangeOnSearch = value => {
+        dispatch(LayDanhSachPhim());
+    }
     
     const columns = [
         {
@@ -127,7 +133,10 @@ export default function Films(props) {
                     size="large"
                     suffix={suffix}
                     onSearch={onSearch}
+                    onChange={handleChangeOnSearch}
+                    required
                 />
+                
             </Space>
             <Table columns={columns} dataSource={data} onChange={onChange} />
         </div>

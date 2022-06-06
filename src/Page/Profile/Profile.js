@@ -25,17 +25,24 @@ export default function Profile(props) {
 
     //Render thông tin đặt vé
     const renderInfoBooking = () => {
-        return thongTinDatVe.map((item,index)=> {
-            return <div className="row profile__booking-item m-0" key={index}>
-                <div className="col-4 booking__item-info">
-                    <img src={item.hinhAnh}/>
-                    <span>{item.tenPhim}</span>
+        if(thongTinDatVe.length === 0) {
+            return (<div>
+                <p className='text-center m-0' style={{color: 'white'}}>Chưa đặt vé</p>
+            </div>)
+        }
+        else {
+            return thongTinDatVe.map((item,index)=> {
+                return <div className="row profile__booking-item m-0" key={index}>
+                    <div className="col-4 booking__item-info">
+                        <img src={item.hinhAnh}/>
+                        <span>{item.tenPhim}</span>
+                    </div>
+                    <div className="col-8 booking__item-ticket">
+                        {renderDanhSachGhe(item.danhSachGhe)}
+                    </div>
                 </div>
-                <div className="col-8 booking__item-ticket">
-                    {renderDanhSachGhe(item.danhSachGhe)}
-                </div>
-            </div>
-        })
+            })
+        }
     }
 
     //Render danh sách ghế đã đặt

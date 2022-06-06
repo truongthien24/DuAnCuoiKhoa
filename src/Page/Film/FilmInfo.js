@@ -18,7 +18,6 @@ export default function FilmInfo(props) {
         dispatch(action);
     }, []);
 
-
     const thongTinLichChieuPhim = useSelector(state => state.QuanLyHeThongRapReducer.thongTinLichChieuPhim);
 
     const arrHeThongRapChieu = useSelector(state => state.QuanLyHeThongRapReducer.arrHeThongRapChieu);

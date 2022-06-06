@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DangKy, DangNhap } from '../Redux/Reducer/Action/QuanLyNguoiDungAction';
 import { ACCESS_TOKEN, USER_LOGIN } from '../Util/Settings';
 import $ from 'jquery';
+import Swal from 'sweetalert2';
+import { Input } from 'antd';
 
 export default function HeaderComponent(props) {
 
@@ -50,7 +52,7 @@ export default function HeaderComponent(props) {
         }),
 
         onSubmit: (values) => {
-            console.log('userAccount', values)
+            console.log('userAccount', values);
             const action = DangKy(values);
             dispatch(action);
         }
@@ -104,9 +106,15 @@ export default function HeaderComponent(props) {
                                                 </NavLink>
                                             </li>
                                             <li className="user__info-item">
-                                                <a className="user__info-link" href="#" onClick={() => {
+                                                <a className="user__info-link" href="#" onClick={ async () => {
                                                     localStorage.removeItem(USER_LOGIN);
                                                     localStorage.removeItem(ACCESS_TOKEN);
+                                                    await Swal.fire({
+                                                        icon: 'success',
+                                                        title: 'Đăng xuất thành công!',
+                                                        showConfirmButton: false,
+                                                        timer: 1000
+                                                    })
                                                     window.location.reload();
                                                 }}>
                                                     <i class="fas fa-sign-out-alt"></i>
@@ -139,12 +147,12 @@ export default function HeaderComponent(props) {
                                     <form onSubmit={formik.handleSubmit}>
                                         <div className="form-group">
                                             <h5>Username: </h5>
-                                            <input className="form-control" name="taiKhoan" onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                            <input className="form-control" name="taiKhoan" onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                                             {formik.errors.taiKhoan && formik.touched.taiKhoan ? (<div className="text-danger">{formik.errors.taiKhoan}</div>) : ''}
                                         </div>
                                         <div className="form-group">
                                             <h5>Password: </h5>
-                                            <input className="form-control" name="matKhau" type="password" onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                            <input className="form-control" name="matKhau" type="password" onChange={formik.handleChange} onBlur={formik.handleBlur}/>
                                             {formik.errors.matKhau && formik.touched.matKhau ? (<div className="text-danger">{formik.errors.matKhau}</div>) : ''}
                                         </div>
                                         <button className="btn modalUser__form-btn" type="submit">Đăng nhập</button>
@@ -203,7 +211,7 @@ export default function HeaderComponent(props) {
                                         </div>
                                         <div className="form-group">
                                             <h5>Mật khẩu: </h5>
-                                            <input className="form-control" name="matKhau" type="password" onChange={formikDangKy.handleChange} onBlur={formikDangKy.handleBlur} />
+                                            <Input.Password className="form-control" name="matKhau" type="password" onChange={formikDangKy.handleChange} onBlur={formikDangKy.handleBlur} />
                                             {formikDangKy.errors.matKhau && formikDangKy.touched.matKhau ? (<div className="text-danger">{formikDangKy.errors.matKhau}</div>) : ''}
                                         </div>
                                         <div className="form-group">
